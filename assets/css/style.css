@@ -6,7 +6,7 @@
 }
 
 .bg-img{
-    background: url('/assets/gif/4.gif');
+    background: url('../gif/4.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
