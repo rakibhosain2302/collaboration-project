@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Collaborative Projects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <section class="py-5 bg-img">
+        <div class="container">
+
+            <h1 class="title">My Collaborative Projects</h1>
+            <p class="subtitle">
+                Projects developed during my internship and company collaboration
+            </p>
+
+            <div class="project-grid" id="projectGrid"></div>
+
+        </div>
+    </section>
+
+    <!-- ================= Project Details Modal ================= -->
+    <div class="modal fade" id="projectModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="modalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <!-- MULTIPLE IMAGES -->
+                    <div id="modalImages" class="d-flex flex-column gap-3 mb-3"></div>
+
+                    <p id="modalDescription"></p>
+
+                    <h6 class="mt-3 fw-bold">Key Features</h6>
+                    <hr>
+                    <ul id="modalFeatures"></ul>
+
+                    <h6 class="mt-3 fw-bold">Tech Stack</h6>
+                    <hr>
+                    <div id="modalTech" class="mb-3"></div>
+
+                    <h6 class="mt-3 fw-bold">My Role</h6>
+                    <hr>
+                    <p id="modalRole"></p>
+
+                </div>
+
+                <div class="modal-footer">
+                    <a id="modalLink" href="" target="_blank" class="btn btn-primary d-none">
+                        Live Preview
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Image Zoom Modal ================= -->
+    <div class="modal fade" id="imagePreviewModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark text-white">
+
+                <div class="modal-header border-0">
+                    <h6 class="modal-title" id="previewModalTitle"></h6>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body d-flex justify-content-center align-items-center">
+                    <img id="fullImage" class="img-fluid">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const projects = [
+            {
+                title: "Smart Therapy Management System",
+                description: "A comprehensive, role-based therapy center management system developed for Optimum Care Therapy Center in collaboration with Isotope IT LTD. The platform centralizes operations into one scalable system to improve efficiency and coordination.",
+                features: ["Doctor-wise appointment scheduling & payment automation", "Patient assessment & session management", "HRM, attendance & shift management", "Finance, ledger, vouchers & reports", "School module for students, teachers & fees", "Inventory, product sales & stock tracking"],
+                techStack: ["Laravel", "MySQL", "JavaScript", "jQuery", "CSS", "Bootstrap", "REST API"],
+                role: "Worked as a Laravel Developer, responsible for backend development, UI design, database design, role-based access control, and collaborating with team members to deliver a production-ready system.",
+                images: [
+                    {
+                        label: "Admin Dashboard:",
+                        src: "assets/images/img11.png"
+                    },
+                    {
+                        label: "User Dashboard:",
+                        src: "assets/images/img5.png"
+                    }
+                ],
+
+                link: ""
+            },
+            {
+                title: "As Sunnah Hijama & Ruqyah Center",
+                description: "Digital solution for therapy management including Hijama & Ruqyah scheduling, finance tracking, and online booking.",
+                images: [
+                    {
+                        label: "UI Design",
+                        src: "assets/images/img2.png"
+                    },
+                    {
+                        label: "UI Design",
+                        src: "assets/images/img3.png"
+                    },
+                    {
+                        label: "UI Design",
+                        src: "assets/images/img4.png"
+                    },
+                ],
+                features: [
+                    "Online Booking for Hijama & Ruqyah",
+                    "Therapy Scheduling for multiple therapists",
+                    "Finance Module: Fees, Payments & Balances",
+                    "Patient Profiles: Booking history & therapy notes",
+                    "Website Integration for patient communication"
+                ],
+                techStack: [
+                    "Laravel",
+                    "MySQL",
+                    "CSS",
+                    "Bootstrap",
+                    "JavaScript",
+                    "jQuery",
+                    "REST API"
+                ],
+                role: "Full Stack Developer: Implemented UI Design, Booking Dashboard, Patient Profiles, Admin Panel, and integrated finance & online booking modules.",
+                link: "https://assunnahlife.com.bd/"
+            },
+
+            {
+                title: "Insaf Physiotherapy & Rehabilitation Center",
+                description: "A modern, responsive web interface designed for a physiotherapy and rehabilitation center, focusing on clear service presentation and user-friendly navigation.",
+                images: [
+                    {
+                        label: "UI Design – Homepage & Service Overview",
+                        src: "assets/images/img6.png"
+                    },
+                    {
+                        label: "UI Design – Appointment & Information Section",
+                        src: "assets/images/img7.png"
+                    }
+                ],
+                features: [
+                    "Responsive UI Design",
+                    "Clean & Professional Layout",
+                    "User-Friendly Navigation",
+                    "Service & Therapy Information Display"
+                ],
+                techStack: [
+                    "HTML",
+                    "CSS",
+                    "Bootstrap",
+                    "JavaScript",
+                    "jQuery"
+                ],
+                role: "Frontend Developer – Designed and implemented the complete UI layout, ensuring responsiveness and a smooth user experience.",
+                link: "https://insafphysiotherapy.com/"
+            },
+            {
+                title: "Learning Management System (LMS)",
+                description: "A web-based Learning Management System designed to manage courses, students, and learning content through a clean, responsive, and user-friendly interface.",
+                images: [
+                    {
+                        label: "UI Design – LMS Webpage Overview",
+                        src: "assets/images/img9.png"
+                    },
+                    {
+                        label: "UI Design – LMS Dashboard",
+                        src: "assets/images/img10.png"
+                    }
+                ],
+                features: [
+                    "Course & Student Management UI",
+                    "Responsive Dashboard Design",
+                    "Clean & Professional Layout",
+                    "User-Friendly Navigation",
+                    "Structured Learning Content Display"
+                ],
+                techStack: [
+                    "Laravel",
+                    "MySQL",
+                    "CSS",
+                    "Bootstrap",
+                    "JavaScript",
+                    "jQuery",
+                    "REST API"
+                ],
+                role: "Laravel Developer – Designed and developed responsive UI layouts, interactive dashboards, and course management screens for the Learning Management System (LMS).",
+                link: ""
+            }
+
+
+
+        ];
+
+        const projectGrid = document.getElementById("projectGrid");
+
+        projects.forEach((project, index) => {
+            // Check if images array exists & has at least 1 image
+            const firstImage = project.images && project.images.length > 0
+                ? project.images[0].src   // <-- use .src if images are objects
+                : "assets/images/default.png"; // fallback image
+
+            projectGrid.innerHTML += `
+        <div class="project-card">
+            <img src="${firstImage}" alt="${project.title}">
+            <h6 class="fw-bold">${project.title}</h6>
+            <p>${project.description.substring(0, 70)}...</p>
+            <button class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#projectModal"
+                onclick="openModal(${index})">
+                View Details
+            </button>
+        </div>
+    `;
+        });
+
+
+        function openModal(index) {
+            const project = projects[index];
+
+            document.getElementById("modalTitle").innerText = project.title;
+            document.getElementById("modalDescription").innerText = project.description;
+            document.getElementById("modalLink").href = project.link;
+            document.getElementById("modalRole").innerText = project.role;
+
+            /* ===== ✅ Live Preview Button Logic (ONLY ADDITION) ===== */
+            const modalLink = document.getElementById("modalLink");
+
+            if (project.link && project.link.trim() !== "") {
+                modalLink.href = project.link;
+                modalLink.classList.remove("d-none");
+            } else {
+                modalLink.classList.add("d-none");
+                modalLink.href = "";
+            }
+            /* ======================================================== */
+
+            // ===== Images =====
+            const imageDiv = document.getElementById("modalImages");
+            imageDiv.innerHTML = "";
+
+            project.images.forEach(img => {
+                imageDiv.innerHTML += `
+                    <div>
+                        <p class="fw-semibold mb-1">${img.label}</p>
+                        <img src="${img.src}"
+                             class="img-fluid rounded"
+                             style="width:100%; cursor:pointer"
+                             onclick="openImagePreview('${img.src}', '${img.label}')">
+                    </div>
+                `;
+            });
+
+            // ===== Features =====
+            const featureList = document.getElementById("modalFeatures");
+            featureList.innerHTML = "";
+            project.features.forEach(feature => {
+                featureList.innerHTML += `<li>${feature}</li>`;
+            });
+
+            // ===== Tech Stack =====
+            const techDiv = document.getElementById("modalTech");
+            techDiv.innerHTML = "";
+            project.techStack.forEach(tech => {
+                techDiv.innerHTML += `<span class="badge bg-secondary me-1">${tech}</span>`;
+            });
+        }
+
+        function openImagePreview(src, imgLabel) {
+            document.getElementById("fullImage").src = src;
+            document.getElementById("previewModalTitle").innerText = imgLabel;
+            new bootstrap.Modal(document.getElementById("imagePreviewModal")).show();
+        }
+
+        const modalLink = document.getElementById('modalLink');
+        const projectUrl = "";
+
+        if (projectUrl) {
+            modalLink.href = projectUrl;
+            modalLink.classList.remove('d-none');
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
